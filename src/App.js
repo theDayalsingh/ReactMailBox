@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AuthForm from "./components/Auth/AuthForm";
-import Logout from "./components/Auth/Logout";
+import ComposeEmail from "./components/mailbox/composeEmail";
+import Welcome from "./components/pages/Welcome";
 
 export default function App() {
   return (
@@ -9,7 +10,8 @@ export default function App() {
       <AuthForm />
       <Routes>
       <Route exact path="/"/>
-      <Route exact path="/welcome" element={<Logout />}/>
+      <Route exact path="/welcome" element={<Welcome/>}/>
+      <Route path='/compose' element={<ComposeEmail/>}/>
       </Routes>
       </BrowserRouter>
     </div>
