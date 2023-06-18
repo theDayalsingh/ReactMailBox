@@ -12,7 +12,7 @@ import Badge from "react-bootstrap/Badge";
 // import ReceiverMailDeets from "./mailDeets";
 // import SentMailDeets from "./sentMailDeets";
 
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
@@ -130,12 +130,12 @@ const Inbox = () => {
     getReadCounts();
   }, [dispatch, email]);
 
-  const history = useHistory();
+  const Navigate = useNavigate();
 
   const handleMailClick = (mailId) => {
     const receivedMail = receivedMails.find((mail) => mail.id === mailId);
     if (receivedMail) {
-      history.push({
+      Navigate.push({
         pathname: `/mail/${mailId}`,
         state: {
           from: receivedMail.from,
@@ -146,7 +146,7 @@ const Inbox = () => {
       });
     } else {
       const sentMail = sentMails.find((mail) => mail.id === mailId);
-      history.push({
+      Navigate.push({
         pathname: `/mail/${mailId}`,
         state: {
           to: sentMail.to,
